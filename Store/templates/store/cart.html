@@ -1,0 +1,62 @@
+{% extends 'store/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% block title %}
+    <title>Your Cart</title>
+    {% endblock title %}
+</head>
+<body>
+    {% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">🛒  Your Cart</h1>
+
+        {% if items %}
+            <form method="POST" action="{% url 'update_cart' %}">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr>
+                                <td>{{ item.product.name }}</td>
+                                <td>
+                                    <input type="number" name="quantity_{{ item.product.id }}" value="{{ item.quantity }}" min="0" class="form-control" style="width: 70px;">
+                                    <a href="{% url 'update_cart' %}"><button type="submit" class="btn btn-primary">Update</button></a>
+                                </td>
+                                <td>₹{{ item.product.price }}</td>
+                                <td>₹{{ item.product.price|floatformat:2 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-end">
+                    <p class="fw-bold">Total: ₹{{ total }}</p>
+                    <a href="{% url 'checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+                    <a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+                </div>
+            </form>
+        {% else %}
+            <p id="empty">Your cart is empty.</p>
+            <div class="d-flex justify-content-center align-items-center flex-column m-5">
+                <a href="{% url 'home' %}" class="btn btn-info">Start shopping now!</a>
+            </div>
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
+</html>

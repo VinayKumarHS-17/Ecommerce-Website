@@ -1,0 +1,52 @@
+{% extends 'store/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% block title %}
+    <title>Checkout</title>
+    {% endblock title %}
+        
+</head>
+<body>
+    {% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">Checkout</h1>
+
+        <p class="fw-bold">Total: ₹{{ total }}</p>
+
+        {% if messages %}
+            <div class="alert alert-info">
+                <ul class="mb-0">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <fieldset class="mb-3">
+                <legend>Select Payment Method:</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment_method" value="COD" id="cod" checked>
+                    <label class="form-check-label" for="cod">Cash on Delivery</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment_method" value="ONLINE" id="payonline">
+                    <label class="form-check-label" for="payonline">Pay Online (Scan QR)</label>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary">Confirm Order</button>
+            <a href="{% url 'cart' %}" class="btn btn-dark">Back</a>
+        </form>
+    </div>
+    {% endblock %}
+
+</body>
+</html>

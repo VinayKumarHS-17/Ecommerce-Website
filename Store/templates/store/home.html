@@ -1,0 +1,41 @@
+{% extends 'store/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% block title %}
+        <title>Home</title>
+    {% endblock title %}
+        
+</head>
+<body>
+    {% block content %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Products</h1>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            {% for product in products %}
+                <div class="col">
+                    <div class="product card h-100 shadow-sm w-100 ">
+                        <div class="card-body text-center">
+                            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}" style="height: 150px; width: 200px;">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">₹{{ product.price }}</p>
+                            <div class="align-items-center justify-content-around d-flex">
+                                <a href="{% url 'product_detail' product.id %}" class="btn btn-primary h-50 ">View Details</a>
+                                <form method="post" action="{% url 'add_to_cart' product.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary btn-success ms-5">Add to Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

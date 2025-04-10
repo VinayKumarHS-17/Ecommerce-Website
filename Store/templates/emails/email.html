@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #198754; font-size: 24px; margin-bottom: 20px; }
+        h2 { font-size: 20px; color: #343a40; margin-top: 20px; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 10px; background: #f1f3f5; margin-bottom: 5px; border-radius: 4px; display: flex; justify-content: space-between; }
+        .badge { background: #6c757d; color: white; padding: 5px 10px; border-radius: 12px; }
+        .fw-bold { font-weight: bold; }
+        .fs-5 { font-size: 18px; }
+        p { margin: 10px 0; color: #495057; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Confirmation - #{{ order.id }}</h1>
+        <p>Dear {{ user.username }},</p>
+        <p>Thank you for your order! Here are the details:</p>
+        
+        <h2>Order Items:</h2>
+        <ul>
+            {% for item in items %}
+                <li>{{ item.quantity }} x {{ item.name }} <span class="badge">${{ item.price }}</span></li>
+            {% endfor %}
+        </ul>
+        
+        <div class="d-flex justify-content-between fw-bold fs-5">
+            <span>Total:</span>
+            <span>Rs.{{ total }}</span>
+        </div>
+        <p><strong>Payment Method:</strong> {{ payment_method }}</p>
+        <p><strong>Status:</strong> {{ order.status }}</p>
+        
+        <p>We’ll notify you once your order is processed.</p>
+        <p>Best regards,<br>Your Store Team</p>
+    </div>
+</body>
+</html>

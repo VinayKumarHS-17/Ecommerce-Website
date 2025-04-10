@@ -1,0 +1,29 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Store - Welcome{% endblock title %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+</head>
+<body>
+    {% block content %}
+    <div class="landing-content text-center">
+        <h1>Welcome to Our Every Day Store</h1>
+        <p class="lead">Please log in or sign up to start shopping!</p>
+        <div>
+            <a href="{% url 'login' %}" class="btn btn-primary btn-custom mt-3 fw-bold">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-success btn-custom mt-3 fw-bold">Sign Up</a>
+        </div>
+    </div>
+    {% endblock %}
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

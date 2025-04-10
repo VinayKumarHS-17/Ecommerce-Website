@@ -1,0 +1,121 @@
+/*---------- Home -------------- */
+
+.search-form input[type="text"] {
+    width: auto;
+    display: inline-block;
+    margin-right: 8px;
+}
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+
+.navbar-brand{
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 45rem;
+}
+
+#welcome{
+    animation: zoom 2.5s infinite ease-in-out;
+    display: inline-block;
+}
+
+@keyframes zoom{
+    0% {transform: scale(1.0);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1.0);}
+}
+
+
+/* -------  landing.html  --------*/
+body {
+    background-color: #f8f9fa;
+}
+
+.landing-content {
+    text-align: center;
+    margin-top: 20vh;
+}
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+.btn-custom {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+/* ------ order.html -------- */
+.order-summary {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.qr-image {
+    display: block;
+    margin: 20px auto;
+}
+
+
+h1 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+
+#back{
+    width: fit-content;
+}
+
+
+#empty{
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 4rem;
+    width: 50%;
+    height: auto;
+    margin-top: 2rem;
+    margin-left: 25%;
+    border-radius: 2rem;
+    border-top: 7px solid #228B22;    
+    border-bottom: 7px solid #228B22; 
+    border-left: 1px solid #006400;   
+    border-right: 1px solid #006400;
+    animation: flip 5s infinite ease-in-out;
+}
+
+
+@keyframes flip{
+    0% {transform: rotateY(360deg);}
+    50% {transform: rotateY(0deg);}
+    100% {transform: rotateY(360deg);}
+}
+
+
+/* profile.html */
+
+#profile{
+    margin-top: -10%;
+    height: 100vh;
+}
+
+
+/* Products */
+
+.product{
+   background-color: rgb(245, 254, 254);
+}
+
+.product:hover{
+    transition: .9s ease-in-out;
+    transform: rotateY(360deg) scale(1.05) translateZ(0);
+}
