@@ -117,5 +117,5 @@ h1 {
 
 .product:hover{
     transition: .9s ease-in-out;
-    transform: rotateY(360deg) scale(1.05) translateZ(0);
+    
 }
