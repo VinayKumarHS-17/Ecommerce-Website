@@ -116,6 +116,6 @@ h1 {
 }
 
 .product:hover{
-    transition: .9s ease-in-out;
-    transform: scale(1.05);
+    transition: .2s ease-in-out;
+    transform: scale(1.009);
 }
