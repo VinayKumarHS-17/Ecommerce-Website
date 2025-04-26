@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success p-3">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success p-3 fixed-top">
         <div class="container-fluid ">
             <a class="navbar-brand" href="{% url 'home' %}">🛍 Every Day</a>
             
@@ -34,7 +34,7 @@
                             <a class="nav-link fw-medium" href="{% url 'logout' %}">Logout</a>
                         </li>
                         <li class="nav-item text-white mt-0">
-                            <a href="{% url 'profile' %}" class="nav-link"><span class="fw-bold fs-3 text-white" id="welcome">{{ user.username }}</span></a>
+                            <a href="{% url 'profile' %}" class="nav-link"><span class="fw-bold fs-3 text-white" >{{ user.username }}</span></a>
                         </li>
                     {% else %}
                         <li class="nav-item">
@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    <footer class="bg-success text-white text-center py-3 mt-4 fw-bold">
+    <footer class="bg-success text-white text-center py-3 mt-4 fw-bold fixed-bottom">
         <p>&copy; 2025 Every Day | All Rights Reserved</p>
     </footer>
 

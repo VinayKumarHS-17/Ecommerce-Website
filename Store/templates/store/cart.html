@@ -13,7 +13,7 @@
 <body>
     {% block content %}
     <div class="container mt-4">
-        <h1 class="mb-4 text-center">🛒  Your Cart</h1>
+        <h1 class="mb-4 text-center" style="margin-top: 8rem;">🛒  Your Cart</h1>
 
         {% if items %}
             <form method="POST" action="{% url 'update_cart' %}">
@@ -53,7 +53,7 @@
         {% else %}
             <p id="empty">Your cart is empty.</p>
             <div class="d-flex justify-content-center align-items-center flex-column m-5">
-                <a href="{% url 'home' %}" class="btn btn-info">Start shopping now!</a>
+                <a href="{% url 'home' %}" class="btn btn-info fw-bold">Start shopping!</a>
             </div>
         {% endif %}
     </div>
