@@ -2,46 +2,51 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     {% block title %}
-        <title>Home</title>
+    <title>Home</title>
     {% endblock title %}
-        
+
 </head>
+
 <body>
     {% block content %}
     <div class="container mt-4" style="margin-bottom: 5.2rem;">
         <h1 class="text-center mb-4 " style="margin-top: 8rem;">Products</h1>
         <div class="row row-cols-1 row-cols-md-5 g-2">
             {% for product in products %}
-                <div class="col">
-                    <div class="product card shadow-sm " style="width: 15rem;height: 15rem;">
-                        <div class="card-body text-center">
-                            
-                            {% if product.image %}
-                                <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}" style="height: 5rem; width: 5rem;">
-                            {% else %}
-                                <img src="/static/images/img5.jpg" class="card-img-top img-fluid" alt="{{ product.name }}" style="height: 5rem; width: 5rem;">
-                            {% endif %}
-                                                            
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">₹{{ product.price }}</p>
-                            <div class="align-items-center justify-content-center d-flex">
-                                <a href="{% url 'product_detail' product.id %}" class="btn btn-primary btn-sm ">View</a>
-                                <form method="post" action="{% url 'add_to_cart' product.id %}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-primary btn-success ms-2 btn-sm">Add </button>
-                                </form>
-                            </div>
+            <div class="col">
+                <div class="product card shadow-sm " style="width: 15rem;height: 15rem;">
+                    <div class="card-body text-center">
+
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}"
+                            style="height: 5rem; width: 5rem;">
+                        {% else %}
+                        <img src="/static/images/default_img.png" class="card-img-top img-fluid"
+                            alt="{{ product.name }}" style="height: 5rem; width: 5rem;">
+                        {% endif %}
+
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">₹{{ product.price }}</p>
+                        <div class="align-items-center justify-content-center d-flex">
+                            <a href="{% url 'product_detail' product.id %}" class="btn btn-primary btn-sm ">View</a>
+                            <form method="post" action="{% url 'add_to_cart' product.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary btn-success ms-2 btn-sm">Add </button>
+                            </form>
                         </div>
                     </div>
                 </div>
+            </div>
             {% endfor %}
         </div>
     </div>
     {% endblock %}
 </body>
+
 </html>
